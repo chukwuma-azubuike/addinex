@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.4.16",
+    "ag-grid-community": "^26.1.0",
+    "ag-grid-react": "^26.1.0",
     "graphql": "^15.6.1",
     "next": "11.1.2",
     "react": "17.0.2",

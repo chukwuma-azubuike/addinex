@@ -1,9 +1,12 @@
+import React, { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import styles from '../styles/Home.module.css'
-import EventData from './api/queries';
 import Link from 'next/link'
+import AgGrid from './components/ag-grid';
+import eventData from './api/queries';
 
 export default function Dashboard() {
+
     return (
         <main className={styles.main} >
             <h1 className={styles.title}>
@@ -20,10 +23,12 @@ export default function Dashboard() {
 
                 <TabPanel>
                     <h2>AGGRID RENDER</h2>
+                    <div className="ag-theme-alpine" style={{ height: '58vh', width: 620 }}>
+                        <AgGrid {...eventData()} />
+                    </div>
                 </TabPanel>
                 <TabPanel>
                     <h2>HI-CHART RENDER</h2>
-                    <EventData />
                 </TabPanel>
             </Tabs>
         </main>
