@@ -12,7 +12,7 @@ export default function Dashboard() {
         <main className={styles.main} >
             <h1 className={styles.title}>
                 Addinex Portal{' '}
-                <Link href="/add">
+                <Link href="/add-event">
                     <a className={styles.card}>Add Event +</a>
                 </Link>
             </h1>
@@ -23,7 +23,7 @@ export default function Dashboard() {
                 </TabList>
 
                 <TabPanel>
-                    <div className="ag-theme-alpine tab" style={{ width: 619 }}>
+                    <div className="ag-theme-alpine tab" style={{ width: 619, height:'490px' }}>
                         <AgGrid {...eventData()} />
                     </div>
                 </TabPanel>

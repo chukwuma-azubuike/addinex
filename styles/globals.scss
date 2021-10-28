@@ -31,9 +31,19 @@ input {
   transition: color 0.15s ease, border-color 0.15s ease;
 }
 
+input::placeholder{
+  font-size: medium;
+}
+
 .tab {
-  margin-top: 60px;
+  margin-top: 30px;
   height: 58vh;
+}
+
+
+footer p {
+  font-size: small;
+  padding: 20px auto;
 }
 
 /* AGgrid Styling */
@@ -54,4 +64,16 @@ input {
 .ag-header-cell {
   /* Necessary to allow for text to grow vertically */
   background-color: rgb(241, 241, 241);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

@@ -9,19 +9,11 @@ interface Event {
 
 export default function HighchartsComp(props: { events: [] }) {
 
-    let eventArr: [[number, number]] = [[1635266070, 1]]
+    let eventArr: [[number, number]] = [[1635266070, 1]] //Initialise Events Array
 
     props.events.forEach((item: Event) => {
         eventArr.push([item.timestamp, item.value])
     })
-
-    const date = new Date()
-    const day = date.getDay()
-    const hours = date.getHours()
-    const mins = date.getMinutes()
-    const secs = date.getSeconds()
-
-    console.log(day, hours, mins, secs)
 
     const options = {
         chart: {
@@ -29,7 +21,7 @@ export default function HighchartsComp(props: { events: [] }) {
             zoomType: 'xy',
             plotBorder: '2px solid',
             width: null,
-            height: null
+            height: 520
         },
         title: {
             text: 'Value Versus Time of Logged Events'
@@ -60,7 +52,7 @@ export default function HighchartsComp(props: { events: [] }) {
             layout: 'vertical',
             align: 'left',
             verticalAlign: 'top',
-            x: 55,
+            x: 70,
             y: 0,
             floating: true,
             backgroundColor: 'aliceblue',
@@ -108,8 +100,6 @@ export default function HighchartsComp(props: { events: [] }) {
             }
         ]
     };
-
-    console.log(eventArr)
 
     // if (props) {
     return (

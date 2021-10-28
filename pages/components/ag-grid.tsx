@@ -10,7 +10,6 @@ export default function AgGrid(props: { events: [] }) {
 
     // set background colour on even rows again, this looks bad, should be using CSS classes
     const getRowStyle = (params: any) => {
-        console.log(typeof params)
         if (params.node.rowIndex % 2 === 0) {
             return { background: 'white' };
         }
@@ -27,7 +26,6 @@ export default function AgGrid(props: { events: [] }) {
                 pagination={true}
                 suppressContextMenu={true}
                 paginationPageSize={100}
-                // paginationAutoPageSize={true}
                 animateRows={true}
                 rowDragManaged={true}
             >
