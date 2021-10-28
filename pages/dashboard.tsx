@@ -11,7 +11,7 @@ export default function Dashboard() {
     return (
         <main className={styles.main} >
             <h1 className={styles.title}>
-                Dashboard{' '}
+                Addinex Portal{' '}
                 <Link href="/add">
                     <a className={styles.card}>Add Event +</a>
                 </Link>
@@ -23,14 +23,12 @@ export default function Dashboard() {
                 </TabList>
 
                 <TabPanel>
-                    <h2>AGGRID RENDER</h2>
-                    <div className="ag-theme-alpine" style={{ height: '58vh', width: 602 }}>
+                    <div className="ag-theme-alpine tab" style={{ width: 619 }}>
                         <AgGrid {...eventData()} />
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <h2>HI-CHART RENDER</h2>
-                    <div className="ag-theme-alpine" style={{ height: '58vh', width: '100%' }}>
+                    <div className="ag-theme-alpine tab" style={{ width: '100%' }}>
                         <HighchartsComp {...eventData()} />
                     </div>
                 </TabPanel>

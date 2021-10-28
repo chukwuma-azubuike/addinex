@@ -38,19 +38,20 @@ export default function HighchartsComp(props: { events: [] }) {
             text: 'Source: Addinex 2021'
         },
         xAxis: {
+            type: 'datetime',
             title: {
                 enabled: true,
-                text: 'Time (seconds)'
+                text: 'Timestamp (hrs)'
             },
             startOnTick: true,
             endOnTick: true,
             showLastLabel: true,
             gridLineWidth: 1,
-            gridLineDashStyle: 'longdash'
+            gridLineDashStyle: 'longdash',
         },
         yAxis: {
             title: {
-                text: 'Value (integer)'
+                text: 'Value (Int)'
             },
             gridLineWidth: 1,
             gridLineDashStyle: 'longdash'
@@ -59,7 +60,7 @@ export default function HighchartsComp(props: { events: [] }) {
             layout: 'vertical',
             align: 'left',
             verticalAlign: 'top',
-            x: 0,
+            x: 55,
             y: 0,
             floating: true,
             backgroundColor: 'aliceblue',
@@ -91,15 +92,18 @@ export default function HighchartsComp(props: { events: [] }) {
                     }
                 },
                 tooltip: {
-                    headerFormat: '<b>{series.name}</b><br>',
-                    pointFormat: '{point.x} secs, {point.y} val'
+                    xDateFormat: '%H:%M:%S',
+                    headerFormat: '<b>{series.name}</b><br><br>',
+                    pointFormat: '<i>Val</i> = {point.y}<br> <i>Timestamp</i> = {point.x: %H:%M:%S} hrs'
                 }
             }
         },
         series: [
             {
                 name: 'Event',
-                color: 'rgba(75, 199, 189, 0.897)',
+                color: 'rgba(78, 166, 243, 0.897)',
+                pointStart: Date.UTC(2012, 0, 1),
+                pointInterval: 24 * 3600 * 1000,
                 data: eventArr
             }
         ]
