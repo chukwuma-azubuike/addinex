@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import AgGrid from './components/ag-grid';
 import eventData from './api/queries';
+import HighchartsComp from './components/high-charts';
 
 export default function Dashboard() {
 
@@ -23,12 +24,15 @@ export default function Dashboard() {
 
                 <TabPanel>
                     <h2>AGGRID RENDER</h2>
-                    <div className="ag-theme-alpine" style={{ height: '58vh', width: 620 }}>
+                    <div className="ag-theme-alpine" style={{ height: '58vh', width: 602 }}>
                         <AgGrid {...eventData()} />
                     </div>
                 </TabPanel>
                 <TabPanel>
                     <h2>HI-CHART RENDER</h2>
+                    <div className="ag-theme-alpine" style={{ height: '58vh', width: '100%' }}>
+                        <HighchartsComp {...eventData()} />
+                    </div>
                 </TabPanel>
             </Tabs>
         </main>
