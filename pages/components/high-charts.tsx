@@ -1,5 +1,8 @@
-import Highcharts from 'highcharts';
+import Highcharts, { dateFormat } from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import moment from 'moment-timezone';
+import { timeComv } from '../utils/time-conv';
+
 
 interface Event {
     id: string
@@ -13,7 +16,7 @@ export default function HighchartsComp(props: { events: [] }) {
 
     if (props.events) {
         props.events.forEach((item: Event) => {
-            eventArr.push([item.timestamp, item.value])
+            eventArr.push([(item.timestamp), item.value])
         })
     }
 
@@ -92,13 +95,17 @@ export default function HighchartsComp(props: { events: [] }) {
                 }
             }
         },
+        time: {
+            timezoneOffset: +(60 * 3),
+        },
         series: [
             {
                 name: 'Event',
                 color: 'rgba(78, 166, 243, 0.45)',
                 pointStart: Date.UTC(2012, 0, 1),
                 pointInterval: 24 * 3600 * 1000,
-                data: eventArr
+                data: eventArr,
+
             }
         ]
     };

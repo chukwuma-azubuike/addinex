@@ -1,0 +1,1 @@
+export const timeComv = (epoch: number) => new Date(epoch * 1000).toLocaleString()

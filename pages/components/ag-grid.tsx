@@ -2,7 +2,7 @@ import React from 'react';
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import moment from 'moment';
+import { timeComv } from '../utils/time-conv';
 
 export default function AgGrid(props: { events: [] }) {
 
@@ -14,7 +14,7 @@ export default function AgGrid(props: { events: [] }) {
         ],
     }
 
-    const dateFormatter = (data: { data: { timestamp: number } }) => moment(data.data.timestamp).format('LTS')
+    const dateFormatter = (data: { data: { timestamp: number } }) => timeComv(data.data.timestamp)
 
     if (props) {
         return (
