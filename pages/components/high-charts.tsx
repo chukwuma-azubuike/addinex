@@ -11,9 +11,11 @@ export default function HighchartsComp(props: { events: [] }) {
 
     let eventArr: [[number, number]] = [[1635266070, 1]] //Initialise Events Array
 
-    props.events.forEach((item: Event) => {
-        eventArr.push([item.timestamp, item.value])
-    })
+    if (props.events) {
+        props.events.forEach((item: Event) => {
+            eventArr.push([item.timestamp, item.value])
+        })
+    }
 
     const options = {
         chart: {
@@ -33,7 +35,7 @@ export default function HighchartsComp(props: { events: [] }) {
             type: 'datetime',
             title: {
                 enabled: true,
-                text: 'Timestamp (hrs)'
+                text: 'Time (hrs)'
             },
             startOnTick: true,
             endOnTick: true,
@@ -43,7 +45,7 @@ export default function HighchartsComp(props: { events: [] }) {
         },
         yAxis: {
             title: {
-                text: 'Value (Int)'
+                text: 'Event Value (int)'
             },
             gridLineWidth: 1,
             gridLineDashStyle: 'longdash'
@@ -93,7 +95,7 @@ export default function HighchartsComp(props: { events: [] }) {
         series: [
             {
                 name: 'Event',
-                color: 'rgba(78, 166, 243, 0.897)',
+                color: 'rgba(78, 166, 243, 0.45)',
                 pointStart: Date.UTC(2012, 0, 1),
                 pointInterval: 24 * 3600 * 1000,
                 data: eventArr
@@ -101,9 +103,7 @@ export default function HighchartsComp(props: { events: [] }) {
         ]
     };
 
-    // if (props) {
     return (
         <HighchartsReact highcharts={Highcharts} options={options} />
     )
-    // } else return <>Loading...</>
 }

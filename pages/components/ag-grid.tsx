@@ -2,25 +2,25 @@ import React from 'react';
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import moment from 'moment';
 
 export default function AgGrid(props: { events: [] }) {
 
-    // set background colour on every row, this is probably bad, should be using CSS classes
-    const rowStyle = { background: 'aliceblue' };
+    const gridOptions: object = {
+        columnDefs: [
+            {
+                field: 'timestamp',
+            },
+        ],
+    }
 
-    // set background colour on even rows again, this looks bad, should be using CSS classes
-    const getRowStyle = (params: any) => {
-        if (params.node.rowIndex % 2 === 0) {
-            return { background: 'white' };
-        }
-    };
+    const dateFormatter = (data: { data: { timestamp: number } }) => moment(data.data.timestamp).format('LTS')
 
     if (props) {
         return (
             <AgGridReact
+                gridOptions={gridOptions}
                 className='ag-theme-alpine'
-                rowStyle={rowStyle}
-                getRowStyle={getRowStyle}
                 rowData={props.events}
                 rowSelection="multiple"
                 pagination={true}
@@ -31,7 +31,7 @@ export default function AgGrid(props: { events: [] }) {
             >
                 <AgGridColumn sortable={true} filter={true} field="id"></AgGridColumn>
                 <AgGridColumn sortable={true} filter={true} field="value"></AgGridColumn>
-                <AgGridColumn sortable={true} filter={true} field="timestamp"></AgGridColumn>
+                <AgGridColumn sortable={true} filter={true} field="timestamp" cellRenderer={dateFormatter} ></AgGridColumn>
             </AgGridReact>
         )
     } else return <>Loading...</>
