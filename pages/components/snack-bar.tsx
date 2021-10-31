@@ -20,16 +20,31 @@ export default function CustomizedSnackbars(props: { open: boolean }) {
         setOpen(false)
     }
 
+    const handleClickOut = (event?: React.SyntheticEvent, reason?: string) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpen(false)
+    }
+
     useEffect(() => {
         setOpen(props.open);
     }, [props])
 
     return (
-        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} style={{ position: 'absolute', top: '-630px', left: '160px' }} >
+        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}
+            style={{
+                position: 'absolute',
+                top: '36px',
+                left: '130px',
+                height: 'fit-content',
+                width: 'fit-content'
+            }}
+        >
             <Alert onClose={handleClose} severity="success"
                 sx={{
                     width: '100%', background: 'rgba(188, 220, 250, 1)',
-                    color: 'black', fontFamily: 'inherit', fontWeight: '400'
+                    color: 'black', fontFamily: 'inherit', fontWeight: '400', textAlign: 'center',
                 }}>
                 Event list updated successfully!
             </Alert>

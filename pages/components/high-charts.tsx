@@ -1,4 +1,4 @@
-import Highcharts, { dateFormat } from 'highcharts';
+import Highcharts, { dateFormat, Point, Series } from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import moment from 'moment-timezone';
 import { timeComv } from '../utils/time-conv';
@@ -36,6 +36,7 @@ export default function HighchartsComp(props: { events: [] }) {
         },
         xAxis: {
             type: 'datetime',
+            // tickInterval: 24 * 3600 * 1000 ,
             title: {
                 enabled: true,
                 text: 'Time (hrs)'
@@ -96,7 +97,8 @@ export default function HighchartsComp(props: { events: [] }) {
             }
         },
         time: {
-            timezoneOffset: +(60 * 3),
+            // timezoneOffset: +(60 * 3),
+            // useUTC: false
         },
         series: [
             {
@@ -109,6 +111,8 @@ export default function HighchartsComp(props: { events: [] }) {
             }
         ]
     };
+
+    console.log(Highcharts)
 
     return (
         <HighchartsReact highcharts={Highcharts} options={options} />
