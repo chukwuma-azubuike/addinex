@@ -36,7 +36,7 @@ export default function CustomizedSnackbars(props: { open: boolean }) {
             style={{
                 position: 'absolute',
                 top: '36px',
-                left: '130px',
+                left: 'calc(50% - 135px)',
                 height: 'fit-content',
                 width: 'fit-content'
             }}

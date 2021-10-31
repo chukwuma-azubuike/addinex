@@ -14,10 +14,12 @@ export default function Dashboard() {
         <main className={styles.main} >
             <CustomizedSnackbars open={true} />
             <h1 className={styles.title}>
-                Addinex Portal{' '}
-                <Link href="/add-event">
-                    <a className={styles.card} style={{ padding: '12px 1rem' }} >Add Event +</a>
-                </Link>
+                <div className='fit'>
+                    <div>Addinex Portal</div>
+                    <Link href="/add-event">
+                        <a className={styles.card} style={{ padding: '12px 1rem' }} >Add Event +</a>
+                    </Link>
+                </div>
             </h1>
             <Tabs>
                 <TabList>
