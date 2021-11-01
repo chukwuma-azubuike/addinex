@@ -89,7 +89,7 @@ export default function HighchartsComp(props: { events: [] }) {
                 tooltip: {
                     xDateFormat: '%H:%M:%S',
                     headerFormat: '<b>{series.name}</b><br><br>',
-                    pointFormat: '<i>Val</i> = {point.y}<br> <i>Timestamp</i> = {point.x: %H:%M:%S, %A, %b %e, %Y} hrs'
+                    pointFormat: '<i>Val</i> = {point.y}<br> <i>Timestamp</i> = {point.x: %H:%M:%S hrs, %A, %b %e, %Y}'
                 }
             }
         },
