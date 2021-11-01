@@ -12,11 +12,11 @@ interface Event {
 
 export default function HighchartsComp(props: { events: [] }) {
 
-    let eventArr: [[number, number]] = [[1635266070, 1]] //Initialise Events Array
+    let eventArr: object[] = [];
 
     if (props.events) {
         props.events.forEach((item: Event) => {
-            eventArr.push([(item.timestamp), item.value])
+            eventArr.push({ x: item.timestamp * 1000, y: item.value })
         })
     }
 
@@ -36,7 +36,6 @@ export default function HighchartsComp(props: { events: [] }) {
         },
         xAxis: {
             type: 'datetime',
-            // tickInterval: 24 * 3600 * 1000 ,
             title: {
                 enabled: true,
                 text: 'Time (hrs)'
@@ -92,13 +91,12 @@ export default function HighchartsComp(props: { events: [] }) {
                 tooltip: {
                     xDateFormat: '%H:%M:%S',
                     headerFormat: '<b>{series.name}</b><br><br>',
-                    pointFormat: '<i>Val</i> = {point.y}<br> <i>Timestamp</i> = {point.x: %H:%M:%S} hrs'
+                    pointFormat: '<i>Val</i> = {point.y}<br> <i>Timestamp</i> = {point.x: %H:%M:%S, %A, %b %e, %Y} hrs'
                 }
             }
         },
         time: {
-            // timezoneOffset: +(60 * 3),
-            // useUTC: false
+            useUTC: false
         },
         series: [
             {
@@ -107,7 +105,6 @@ export default function HighchartsComp(props: { events: [] }) {
                 pointStart: Date.UTC(2012, 0, 1),
                 pointInterval: 24 * 3600 * 1000,
                 data: eventArr,
-
             }
         ]
     };
