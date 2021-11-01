@@ -1,7 +1,5 @@
-import Highcharts, { dateFormat, Point, Series } from 'highcharts';
+import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import moment from 'moment-timezone';
-import { timeComv } from '../utils/time-conv';
 
 
 interface Event {
